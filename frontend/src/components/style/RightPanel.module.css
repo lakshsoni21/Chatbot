@@ -1,0 +1,188 @@
+.rightPanel {
+    width: 80%;
+    border-radius: 1rem;
+    background-color: #fffeff;
+    padding: 1rem;
+}
+
+.rightPanelThread {
+    width: 80%;
+    border-radius: 1rem;
+    background-color: #fffeff;
+    padding: 1rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+.typeBox {
+    width: 50%;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    border-radius: 2rem;
+    border: 0px;
+    padding: 0.5rem;
+    box-shadow: 2px 2px 6px gray;
+}
+
+.typeBox>input {
+    padding: 0.6rem;
+    border-radius: 1rem;
+    border: 0px;
+    outline: none;
+    font-size: medium;
+}
+
+.typeBox>button {
+    border-radius: 50%;
+    background-color: black;
+    width: 90%;
+}
+
+.typeBox>button:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 6px gray;
+}
+
+.typeBox>button:active {
+    cursor: pointer;
+    box-shadow: 4px 4px 6px gray;
+}
+
+/* ----- */
+
+.header {
+    height: 5%;
+    align-self: flex-start;
+}
+
+.question {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.title {
+    padding: 5px 0.5rem 5px 0.5rem;
+    background-color: lightgray;
+    border-radius: 1rem;
+}
+
+.title>p {
+    margin: 0;
+}
+
+
+/* --- */
+
+.answer {
+    padding: 0.5rem;
+    border-radius: 12px;
+    line-height: 1.6;
+}
+
+.answer p {
+    margin: 0;
+}
+
+
+.answer ul {
+    padding-left: 20px;
+}
+
+.answer li {
+    margin-bottom: 4px;
+}
+
+.answer code {
+    background: #2d2d2d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.answer pre {
+    background: #2d2d2d;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.scrollable {
+    width: 100%;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    width: 70%;
+}
+
+/* Blinking effect */
+.typing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+
+    background: #f4f4f5;
+    /* soft light grey bubble */
+    border: 1px solid #e5e7eb;
+    /* subtle border */
+    border-radius: 14px;
+    width: fit-content;
+}
+
+.typing span {
+    width: 6px;
+    height: 6px;
+    background-color: #6b7280;
+    /* neutral grey dots */
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: blink 1.4s infinite both;
+}
+
+.typing span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.2;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}

@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: normal;
+}
+
+body {
+  background: #ececec;
+  overflow: hidden;
+}
+
+#main {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ------ */
+#delete:hover {
+  background-color: lightgray;
+}
+
+#rename:hover {
+  background-color: lightgray;
+}
