@@ -1,5 +1,4 @@
 from database import messages_collection
-from bson import ObjectId
 
 
 def pair_messages(messages):

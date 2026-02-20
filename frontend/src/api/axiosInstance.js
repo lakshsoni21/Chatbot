@@ -1,7 +1,8 @@
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000",
+  baseURL: API,
 });
 
 api.interceptors.request.use((config) => {
@@ -14,7 +15,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-
 api.interceptors.response.use(
   (res) => res,
   (err) => {
@@ -23,7 +23,7 @@ api.interceptors.response.use(
       window.location.href = "/login";
     }
     return Promise.reject(err);
-  }
+  },
 );
 
 export default api;

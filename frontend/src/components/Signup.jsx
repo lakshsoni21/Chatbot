@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import "./style/Signup.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
+const API = import.meta.env.VITE_API_URL;
 
 function Signup() {
   const navigate = useNavigate();
@@ -16,10 +17,10 @@ function Signup() {
       password: password,
     };
     axios
-      .post("http://127.0.0.1:8000/signup", user)
+      .post(`${API}/signup`, user)
       .then((response) => {
-        alert(response.data.message)
-        navigate("/login")
+        alert(response.data.message);
+        navigate("/login");
       })
       .catch((response) => {
         alert(response.response.data.detail);
@@ -74,9 +75,14 @@ function Signup() {
               </label>
             </div>
 
-            <button type="button" onClick={() => {
-              handleSubmit()
-            }}>Create account</button>
+            <button
+              type="button"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
+              Create account
+            </button>
           </form>
 
           <p className="login-text">

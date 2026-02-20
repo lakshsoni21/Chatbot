@@ -15,10 +15,606 @@ body {
 }
 
 /* ------ */
+
+#delete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+#rename {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
 #delete:hover {
   background-color: lightgray;
+  cursor: pointer;
 }
 
 #rename:hover {
   background-color: lightgray;
+  cursor: pointer;
+}
+
+#rename p {
+  margin: 0;
+  font-size: medium;
+}
+
+#delete>p {
+  margin: 0;
+  font-size: medium;
+}
+
+.popup {
+  padding: 0.1rem;
+  position: absolute;
+  left: 40px;
+  transform: translateX(100%);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+/* Forgot password css */
+.forgot-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6f8;
+}
+
+.forgot-card {
+  background: #fff;
+  padding: 2rem;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.forgot-card h2 {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-card input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.forgot-card button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: #111;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.forgot-card button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.success {
+  color: #2e7d32;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Left Panel css */
+.left-panel {
+  width: 20%;
+  border-radius: 1rem;
+  background-color: #fffeff;
+  padding: 1rem;
+  height: 96vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  position: relative;
+
+}
+
+#top {
+  display: flex;
+  font-size: xx-large;
+  width: 86%;
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+#chats-section {
+  margin-top: 2rem;
+  height: 90%;
+  overflow-y: auto;
+}
+
+.chats {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.chats>p {
+  margin: 0;
+}
+
+.chats:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+  ;
+}
+
+
+#search {
+  display: flex;
+  gap: 0.5rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  align-items: center;
+  padding: 4px;
+}
+
+#search-title {
+  border: none;
+}
+
+#icon {
+  height: fit-content;
+}
+
+#search-title {
+  width: 100%;
+  font-size: larger;
+}
+
+#list {
+  padding: 1rem 0.5rem 1rem 0.5rem;
+}
+
+#new-chat {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  border-radius: 1rem;
+  align-items: center;
+  padding: 0.5rem;
+  margin-top: auto;
+
+}
+
+#new-chat>button {
+  background-color: black;
+  color: white;
+  margin: 0.2rem;
+  border: 1px solid black;
+  font-size: larger;
+}
+
+#new-chat>button:hover {
+  cursor: pointer;
+}
+
+#new-chat:active {
+  box-shadow: 3px 3px 5px gray;
+}
+
+#userinfo {
+  display: flex;
+  /* justify-content: space-around;    */
+  margin-top: 1.5rem;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+#userinfo:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+#user-logo {
+  border: 1px solid gray;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+#setting {
+  border: 1px solid gray;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+#username {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectedChat {
+  background-color: lightgrey;
+}
+
+.userPopUp {
+  position: absolute;
+  bottom: 70px;
+  left: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  z-index: 1000;
+  padding: 0.5rem;
+}
+
+.userPopUp p {
+  margin: 0;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+
+.changePassword {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+
+.changePassword:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.changePassword:active {
+  box-shadow: 3px 3px 5px lightgrey;
+}
+
+.logout:active {
+  box-shadow: 3px 3px 5px lightgrey;
+}
+
+/* login css */
+
+.page {
+  min-height: 80vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+.card {
+  width: 440px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 13px;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.field input {
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.field input::placeholder {
+  color: #9ca3af;
+}
+
+.forgot {
+  text-align: right;
+  margin-bottom: 18px;
+}
+
+.forgot a {
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.btn {
+  width: 100%;
+  height: 46px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #1e4fd6;
+}
+
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 18px;
+}
+
+.footer a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .card {
+    width: 90%;
+    padding: 24px;
+  }
+}
+
+/* Sign Up css */
+
+
+body {
+  margin: 0;
+  background: #f9fafb;
+}
+
+/* Page container */
+.signup-page {
+  min-height: 100vh;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.signup-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.signup-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.signup-header p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Card */
+.signup-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Form */
+.signup-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-card label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.signup-card input[type="text"],
+.signup-card input[type="email"],
+.signup-card input[type="password"] {
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.signup-card input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Terms */
+.terms {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #4b5563;
+  margin: 12px 0 18px;
+}
+
+.terms span {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* Button */
+.signup-card button {
+  background: #2563eb;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signup-card button:hover {
+  background: #1d4ed8;
+}
+
+/* Footer text */
+.login-text {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 16px;
+  color: #6b7280;
+}
+
+.login-text span {
+  color: #f59e0b;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 480px) {
+  .signup-card {
+    padding: 20px;
+  }
+
+  .signup-header h1 {
+    font-size: 24px;
+  }
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+@media (max-width: 425px) {
+
+  /* Show hamburger */
+  .sidebar-toggle {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    border-radius: 50%;
+    border: none;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+
+    z-index: 1200;
+  }
+
+  /* Sidebar becomes overlay */
+  .left-panel {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    /* hidden by default */
+    width: 100%;
+    max-width: 300px;
+    height: 100vh;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+
+  #main {
+    gap: 0;
+  }
+
+  /* When toggled */
+  .left-panel.show {
+    left: 0;
+  }
+
+  #search-title {
+    font-size: medium;
+  }
+
+  #top {
+    justify-content: center;
+  }
 }

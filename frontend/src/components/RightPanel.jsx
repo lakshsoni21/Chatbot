@@ -4,7 +4,7 @@ import { BsFillSendFill } from "react-icons/bs";
 import Thread from "./Thread";
 import styles from "./style/RightPanel.module.css";
 
-function RightPanel({ chatId, onSelectChatId }) {
+function RightPanel({ chatId, onSelectChatId, showSidebar }) {
   const [userQuestion, setUserQuestion] = useState("");
   const [allMessages, setAllMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -114,7 +114,11 @@ function RightPanel({ chatId, onSelectChatId }) {
   return (
     <>
       {chatId || isLoading ? (
-        <div className={styles.rightPanelThread}>
+        <div
+          className={`${styles.rightPanelThread} ${
+            showSidebar ? styles.hide : ""
+          }`}
+        >
           <div className={styles.scrollable} ref={scrollRef}>
             <div className={styles.content}>
               {allMessages.map((msg, index) => (
@@ -140,8 +144,9 @@ function RightPanel({ chatId, onSelectChatId }) {
           </div>
         </div>
       ) : (
-        <div className={styles.rightPanel}>
-          <h1>LLAMA</h1>
+        <div
+          className={`${styles.rightPanel} ${showSidebar ? styles.hide : ""}`}
+        >
           <div className={styles.container}>
             <h1>What's on your mind today?</h1>
             <div className={styles.typeBox}>

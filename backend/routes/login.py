@@ -4,6 +4,10 @@ from models import LoginSchema
 from database import users_collection
 from datetime import datetime, timedelta
 from jose import jwt
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 router = APIRouter()
 
@@ -11,9 +15,10 @@ router = APIRouter()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # JWT token creation
-SECRET_KEY = "l@ksh2004"
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINIUTES = 30
+
 
 def create_access_token(data: dict):
     to_encode = data.copy()
@@ -27,12 +32,14 @@ def signin(user: LoginSchema):
     existing_user = users_collection.find_one({"email": user.email})
     if not existing_user:
         raise HTTPException(status_code=400, detail="Invalid email or password")
-    
+
     if not pwd_context.verify(user.password, existing_user["password"]):
         raise HTTPException(status_code=400, detail="Invalid email or password")
 
     token = create_access_token({"sub": str(existing_user["_id"])})
-    
-    return {"message": "Login successful",
-            "access_token": token,
-            "token_type": "bearer"}
+
+    return {
+        "message": "Login successful",
+        "access_token": token,
+        "token_type": "bearer",
+    }

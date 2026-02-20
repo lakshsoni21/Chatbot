@@ -1,9 +1,13 @@
 import httpx
 from database import messages_collection
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-LLAMA_API_KEY = "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"
-LLAMA_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+load_dotenv()
+
+LLAMA_API_KEY = os.getenv("LLAMA_API_KEY")
+LLAMA_API_URL = os.getenv("LLAMA_API_URL")
 
 
 async def createMessage(question: str, chat_id: str):

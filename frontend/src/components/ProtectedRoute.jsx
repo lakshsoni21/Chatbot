@@ -1,22 +1,22 @@
 import { Navigate } from "react-router-dom";
 import api from "../api/axiosInstance";
 
-function ProtectedRoute ({children}) {
-    const token = localStorage.getItem("token");
-    if(!token){
-        return <Navigate to={"/login"} />
-    }
+const API = import.meta.env.VITE_API_URL;
 
-    api.get("http://127.0.0.1:8000/")
-    .then((response) => {
-        // console.log(response);
-        
-    })
+function ProtectedRoute({ children }) {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return <Navigate to={"/login"} />;
+  }
+
+  api
+    .get(API)
+    .then((response) => {})
     .catch((error) => {
-        console.log(error);
-    })
+      console.log(error);
+    });
 
-    return children;
+  return children;
 }
 
 export default ProtectedRoute;

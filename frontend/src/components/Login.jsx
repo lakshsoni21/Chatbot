@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./style/Login.css"
 import { useState } from "react";
 import axios from "axios";
+
+const API = import.meta.env.VITE_API_URL;
 
 function Login() {
   const navigate = useNavigate();
@@ -11,10 +12,11 @@ function Login() {
   function Handlelogin() {
     const user = {
       email: email,
-      password: password
-    }
+      password: password,
+    };
 
-    axios.post("http://127.0.0.1:8000/login", user)
+    axios
+      .post(`${API}/login`, user)
       .then((response) => {
         localStorage.setItem("token", response.data.access_token);
         alert(response.data.message);
@@ -22,7 +24,7 @@ function Login() {
       })
       .catch((error) => {
         alert(error.response.data.detail);
-      })
+      });
   }
 
   return (
@@ -33,25 +35,41 @@ function Login() {
       <div className="card">
         <div className="field">
           <label>Email address</label>
-          <input type="email" placeholder="Enter your email" value={email} onChange={(e) => {
-            setEmail(e.target.value);
-          }}/>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
         </div>
 
         <div className="field">
           <label>Password</label>
-          <input type="password" placeholder="Enter your password" value={password} onChange={(e) => {
-            setPassword(e.target.value);
-          }}/>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
         </div>
 
         <div className="forgot">
           <Link to="/forgot-password">Forgot password?</Link>
         </div>
 
-        <button className="btn" type="button" onClick={() => {
-          Handlelogin();
-        }}>Sign in</button>
+        <button
+          className="btn"
+          type="button"
+          onClick={() => {
+            Handlelogin();
+          }}
+        >
+          Sign in
+        </button>
 
         <p className="footer">
           Don&apos;t have an account? <Link to="/">Signup</Link>
@@ -61,4 +79,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Login;

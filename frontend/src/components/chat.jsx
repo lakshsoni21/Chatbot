@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { MdDelete } from "react-icons/md";
-import { FaPencilAlt } from "react-icons/fa";
 
-function Chat({ id, data, updateSelectChatId, chatId, deleteChat }) {
+function Chat({ id, data, updateSelectChatId, chatId, openPopup, setPopup }) {
   const [clicked, setClicked] = useState(false);
   return (
     <>
@@ -16,30 +14,18 @@ function Chat({ id, data, updateSelectChatId, chatId, deleteChat }) {
         <p>{data}</p>
         <BsThreeDotsVertical
           id="chatdots"
-          onClick={() => {
+          onClick={(e) => {
             setClicked(!clicked);
-            console.log(clicked);
+            if (clicked) {
+              openPopup({
+                chatId: chatId,
+                rect: e.currentTarget.getBoundingClientRect(),
+              });
+            } else {
+              setPopup(null);
+            }
           }}
         />
-        {clicked ? (
-          <>
-            <div className="popup">
-              <div id="rename">
-                <p>Rename</p>
-                <FaPencilAlt />
-              </div>
-              <div
-                id="delete"
-                onClick={() => {
-                  deleteChat(id);
-                }}
-              >
-                <p>Delete</p>
-                <MdDelete size={20} />
-              </div>
-            </div>
-          </>
-        ) : null}
       </div>
     </>
   );

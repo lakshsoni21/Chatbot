@@ -186,3 +186,41 @@ h1 {
         opacity: 0.2;
     }
 }
+
+@media(max-width: 425px) {
+    .rightPanelThread {
+        width: 100%;
+        padding: 0.5rem 0 0.5rem 0;
+    }
+
+    .typeBox {
+        width: 80%;
+        grid-template-columns: 80% 20%;
+    }
+
+    .button {
+        width: 80%;
+    }
+
+    .rightPanel.hide {
+        width: 0%;
+        display: none;
+    }
+
+    .hide {
+        width: 0%;
+    }
+
+    .rightPanel {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rightPanel .container {
+        justify-content: normal;
+        font-size: small;
+    }
+}

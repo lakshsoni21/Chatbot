@@ -4,8 +4,6 @@ import remarkGfm from "remark-gfm";
 import TypewriterMarkdown from "./TypewriterMarkdown";
 
 function Thread({ item, onTypewriterDone }) {
-  console.log(item);
-
   return (
     <>
       <div className={styles.question}>
