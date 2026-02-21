@@ -1,9 +1,8 @@
 import styles from "./style/RightPanel.module.css";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import TypewriterMarkdown from "./TypewriterMarkdown";
 
-function Thread({ item, onTypewriterDone }) {
+function Thread({ item }) {
   return (
     <>
       <div className={styles.question}>
@@ -17,15 +16,6 @@ function Thread({ item, onTypewriterDone }) {
             <span></span>
             <span></span>
             <span></span>
-          </div>
-        </>
-      ) : item.typewriter ? (
-        <>
-          <div className={styles.answer}>
-            <TypewriterMarkdown
-              text={item.answer}
-              onDone={() => onTypewriterDone(item.id)}
-            />
           </div>
         </>
       ) : (

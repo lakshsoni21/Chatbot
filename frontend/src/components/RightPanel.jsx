@@ -22,7 +22,6 @@ function RightPanel({ chatId, onSelectChatId, showSidebar }) {
         const messagesWithFlag = response.data.messages.map((msg) => ({
           ...msg,
           isNew: false,
-          typewriter: false,
         }));
         setAllMessages(messagesWithFlag);
       })
@@ -46,7 +45,6 @@ function RightPanel({ chatId, onSelectChatId, showSidebar }) {
       question: userQuestion,
       answer: null,
       isNew: true,
-      typewriter: false,
     };
 
     setAllMessages([tempMessage]);
@@ -64,12 +62,6 @@ function RightPanel({ chatId, onSelectChatId, showSidebar }) {
         console.log(error);
       });
   }
-
-  const handleTypewriterDone = (id) => {
-    setAllMessages((prev) =>
-      prev.map((msg) => (msg.id === id ? { ...msg, typewriter: false } : msg)),
-    );
-  };
 
   function createMessage() {
     if (!userQuestion.trim() || !chatId) return;
@@ -92,12 +84,9 @@ function RightPanel({ chatId, onSelectChatId, showSidebar }) {
       .post("/createMessage", { question: tempMessage.question, chatId })
       .then((response) => {
         const answer = response.data.data.answer;
-        console.log(response);
         setAllMessages((prev) =>
           prev.map((msg, index) =>
-            index === prev.length - 1
-              ? { ...msg, answer, isNew: false, typewriter: true }
-              : msg,
+            index === prev.length - 1 ? { ...msg, answer, isNew: false } : msg,
           ),
         );
 
@@ -122,11 +111,7 @@ function RightPanel({ chatId, onSelectChatId, showSidebar }) {
           <div className={styles.scrollable} ref={scrollRef}>
             <div className={styles.content}>
               {allMessages.map((msg, index) => (
-                <Thread
-                  key={index}
-                  item={msg}
-                  onTypewriterDone={handleTypewriterDone}
-                />
+                <Thread key={index} item={msg} />
               ))}
             </div>
           </div>

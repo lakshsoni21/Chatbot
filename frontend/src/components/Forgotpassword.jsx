@@ -25,9 +25,7 @@ export default function Forgotpassword() {
       // 🔗 Replace this with your API call
       axios
         .post(`${API}/forgot-password`, { email: email })
-        .then((response) => {
-          console.log(response);
-        })
+        .then((response) => {})
         .catch((error) => {
           console.log(error);
         });

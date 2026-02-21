@@ -4,9 +4,7 @@ import { FaPencilAlt } from "react-icons/fa";
 
 function Popup({ chatId, y, setChats, onSelectChatId, setPopup }) {
   function deleteChat(id) {
-    console.log("Hello", id);
     api.post("/deletechat", { chatId: chatId }).then((response) => {
-      console.log(response);
       setChats((prevChats) => prevChats.filter((chat) => chat._id !== id));
       onSelectChatId("");
       setPopup(null);

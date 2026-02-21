@@ -22,7 +22,6 @@ function LeftPanel({ onSelectChatId, chatId, showSidebar, setShowSidebar }) {
     api
       .get("/allChats")
       .then((response) => {
-        console.log(response.data);
         setChats(response.data.chats);
         setUsername(response.data.name);
       })
