@@ -12,7 +12,7 @@ from routes.resetpassword import router as reset_password_router
 app = FastAPI()
 
 
-origins = ["http://localhost:5173", "localhost:5173"]
+origins = ["http://localhost:5173", "localhost:5173", "https://cortexaibot.netlify.app"]
 
 app.add_middleware(
     CORSMiddleware,
